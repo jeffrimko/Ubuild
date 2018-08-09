@@ -20,6 +20,10 @@ setup(
     py_modules=["ubuild"],
     scripts=SCRIPTS,
     long_description=open("README.rst").read() if isfile("README.rst") else "",
+    install_requires=[
+       "auxly>=0.5.2",
+       "qprompt>=0.11.1"
+    ],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Topic :: Utilities",

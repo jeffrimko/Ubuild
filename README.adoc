@@ -22,3 +22,58 @@ Ubuild should run on any Python 3.3+ interpreter with some additional third-part
 Ubuild is https://pypi.python.org/pypi/ubuild[available on PyPI here] and can be installed with pip using the following command: `pip install ubuild`
 
 Additionally, Ubuild can be installed from source by running: `python setup.py install`
+
+== Usage
+Create a `_Build.py` file. Import `ubuild` and use the `menu` decorator to add functions to the build menu. Use the `main` function to show the menu. For example:
+
+[source,python]
+--------
+from ubuild import menu, main
+
+@menu
+def build():
+    ...
+
+@menu
+def clean():
+    ...
+
+main()
+--------
+
+Running this script will show the following menu:
+
+--------
+-- MENU --
+  (b) Build
+  (c) Clean
+  (q) Quit
+[!] Menu loops until quit.
+[?] Enter menu selection:
+--------
+
+By default, the menu entry names are based off the function name. For example:
+
+  - `something()` => `(s) Something`
+  - `do_something()` => `(ds) Do Something`
+  - `do_something_else()` => `(dse) Do Something Else`
+
+Because Ubuild is meant to be lightweight and capture build step details, often it might be useful to use https://github.com/jeffrimko/Auxly[Auxly] to call other utilities. For example:
+
+[source, python]
+--------
+def build():
+    return auxly.shell.call("make")
+--------
+
+Note the `return` on the call. This allows the exit code from the `make` call to propagate up through to Ubuild, i.e. if the menu is quit after the call, the exit code for Ubuild will be the `make` exit code.
+
+The `ubuild` command line utility can be used in two different ways:
+
+  . Calling `ubuild` without arguments in a directory with `_Build.py` or any of the child directories will show the Ubuild menu.
+  . Calling `ubuild` with arguments in a directory with `_Build.py` or any of the child directories will run that menu entry, e.g. `ubuild b`.
+
+== Similar
+The following projects are similar and may be worth checking out:
+
+  - https://github.com/pyinvoke/invoke/[Invoke]
