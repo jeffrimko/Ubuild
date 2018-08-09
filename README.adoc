@@ -62,6 +62,7 @@ Because Ubuild is meant to be lightweight and capture build step details, often 
 
 [source, python]
 --------
+@menu
 def build():
     return auxly.shell.call("make")
 --------
@@ -72,6 +73,36 @@ The `ubuild` command line utility can be used in two different ways:
 
   . Calling `ubuild` without arguments in a directory with `_Build.py` or any of the child directories will show the Ubuild menu.
   . Calling `ubuild` with arguments in a directory with `_Build.py` or any of the child directories will run that menu entry, e.g. `ubuild b`.
+
+A few additional notes about the `menu` decorator:
+
+[source, python]
+--------
+@menu("x")  # (x) Build
+def build():
+    ...
+
+@menu(name="x")  # (x) Build
+def build():
+    ...
+
+@menu(desc="Something")  # (s) Something
+def build():
+    ...
+
+@menu("x", desc="Something")  # (x) Something
+def build():
+    ...
+
+@menu(desc="Flag Set", args=[True])     # (fs) Flag Set
+@menu(desc="Flag Clear", args=[False])  # (fc) Flag Clear
+def build(flag):
+    ...
+
+@menu(desc="Flag Clear", kwargs={'flag':False})  # (fc) Flag Clear
+def build(flag=True):
+    ...
+--------
 
 == Similar
 The following projects are similar and may be worth checking out:
