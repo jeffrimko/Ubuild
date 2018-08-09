@@ -1,0 +1,24 @@
+= Ubuild
+
+A no-frills build script framework.
+
+== Introduction
+This project provides a Python 3.3+ library/utility for creating build scripts. The main features of Ubuild are:
+
+  - Streamlines the discoverability of build steps/tasks.
+  - Build step/task details are captured in Python functions.
+  - Provides a CLI menu to show available build steps/tasks.
+  - Provides a CLI utility `ubuild` to locate and run build scripts.
+
+== Status
+Currently, this project is in the **development release** stage. While this project is suitable for use, please note that there may be incompatibilities in new releases.
+
+Release notes are maintained in the project https://github.com/jeffrimko/Ubuild/blob/master/CHANGELOG.adoc[changelog].
+
+== Requirements
+Ubuild should run on any Python 3.3+ interpreter with some additional third-party libraries.
+
+== Installation
+Ubuild is https://pypi.python.org/pypi/ubuild[available on PyPI here] and can be installed with pip using the following command: `pip install ubuild`
+
+Additionally, Ubuild can be installed from source by running: `python setup.py install`
