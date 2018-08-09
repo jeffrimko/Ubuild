@@ -2,7 +2,7 @@
 
 == ubuild-0.1.1 (2018-08-09)
 === Highlights
-  - Not functional changes, doc and requirement updates.
+  - No functional changes, only doc and requirement updates.
 
 == ubuild-0.1.0 (2018-08-08)
 === Highlights
