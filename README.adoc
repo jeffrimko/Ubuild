@@ -16,7 +16,7 @@ Currently, this project is in the **development release** stage. While this proj
 Release notes are maintained in the project https://github.com/jeffrimko/Ubuild/blob/master/CHANGELOG.adoc[changelog].
 
 == Requirements
-Ubuild should run on any Python 3.3+ interpreter with some additional third-party libraries.
+Ubuild should run on any Python 3.3+ interpreter with some additional third-party libraries (installed automatically).
 
 == Installation
 Ubuild is https://pypi.python.org/pypi/ubuild[available on PyPI here] and can be installed with pip using the following command: `pip install ubuild`
@@ -54,9 +54,9 @@ Running this script will show the following menu:
 
 By default, the menu entry names are based off the function name. For example:
 
-  - `something()` => `(s) Something`
-  - `do_something()` => `(ds) Do Something`
-  - `do_something_else()` => `(dse) Do Something Else`
+  - `something()` = `(s) Something`
+  - `do_something()` = `(ds) Do Something`
+  - `do_something_else()` = `(dse) Do Something Else`
 
 Because Ubuild is meant to be lightweight and capture build step details, often it might be useful to use https://github.com/jeffrimko/Auxly[Auxly] to call other utilities. For example:
 
