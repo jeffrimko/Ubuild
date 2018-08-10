@@ -48,8 +48,8 @@ def menu(*args, **kwargs):
         args.pop(0)
     name = args.pop(0) if args else kwargs.get('name')
     desc = args.pop(0) if args else kwargs.get('desc')
-    fargs = kwargs.get('args')
-    fkrgs = kwargs.get('kwargs')
+    fargs = args.pop(0) if args else kwargs.get('args')
+    fkrgs = args.pop(0) if args else kwargs.get('kwargs')
     def decor(func):
         global _MENEU
         nonlocal name, desc, fargs, fkrgs
@@ -69,15 +69,17 @@ def main(**kwargs):
     """Shows the main build menu. When the menu exits, the system-level exit()
     will be called with the menu return value."""
     global _MENEU
-    sys.exit(_MENU.main(loop=True, returns="func", **kwargs))
+    returns = kwargs.pop('returns', "func")
+    header = kwargs.pop('header', "Ubuild")
+    sys.exit(_MENU.main(loop=True, returns="func", header=header, **kwargs))
 
-def runner():
+def runner(startdir="."):
     """Attempts to locate a build script by checking the current directory and
     walking up parent directories towards the filesystem root. If found, the
     build script will be run. When the script exits, the system-level exit()
     will be called using the return value from the script."""
     scriptname = "_Build.py"
-    cdir = op.abspath(".")
+    cdir = op.abspath(startdir)
     found = False
     while True:
         if scriptname in os.listdir(cdir):
