@@ -15,7 +15,7 @@ from qprompt import Menu, alert
 ## SECTION: Global Definitions                                  #
 ##==============================================================#
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 #: The main build menu.
 _MENU = Menu()
@@ -73,13 +73,13 @@ def main(**kwargs):
     header = kwargs.pop('header', "Ubuild")
     sys.exit(_MENU.main(loop=True, returns="func", header=header, **kwargs))
 
-def runner(startdir="."):
-    """Attempts to locate a build script by checking the current directory and
+def runner(searchdir="."):
+    """Attempts to locate a build script by checking the search directory and
     walking up parent directories towards the filesystem root. If found, the
     build script will be run. When the script exits, the system-level exit()
     will be called using the return value from the script."""
     scriptname = "_Build.py"
-    cdir = op.abspath(startdir)
+    cdir = op.abspath(searchdir)
     found = False
     while True:
         if scriptname in os.listdir(cdir):
