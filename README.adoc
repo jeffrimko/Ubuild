@@ -108,3 +108,12 @@ def build(flag=True):
 The following projects are similar and may be worth checking out:
 
   - https://github.com/pyinvoke/invoke/[Invoke]
+
+=== FAQ
+Why `_Build.py` for script names?
+
+  - This project follows the naming guidelines provided by https://github.com/jeffrimko/UnifiedStyleGuide/blob/master/doc/special_files/main.adoc#8-user-scripts[the Unified Style Guide for naming user scripts]. The name is meant to distinguish this script as being intended for direct user interaction. For example, a name like `build.py` is not clear whether it is mean for a user or if it is called by something else.
+
+Is Ubuild intended to replace other build tools?
+
+  - No, not at all! In fact, Ubuild is intended to supplement other build tools by providing a simple abstraction layer for performing build tasks. For example, a project may start using `make` to organize builds but later move to `scons`. By using Ubuild to capture the build step details, a user need never be aware of the change. They just see the build entry in the Ubuild menu.
