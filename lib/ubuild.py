@@ -15,7 +15,7 @@ from qprompt import Menu, alert
 ## SECTION: Global Definitions                                  #
 ##==============================================================#
 
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 
 #: The main build menu.
 _MENU = Menu()
