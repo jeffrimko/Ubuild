@@ -4,7 +4,7 @@ from platform import system
 
 setup(
     name = "ubuild",
-    version = "0.1.4",
+    version = "0.1.5",
     author = "Jeff Rimko",
     author_email = "jeffrimko@gmail.com",
     description = "A no-frills build script framework.",

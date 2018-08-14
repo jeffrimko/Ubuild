@@ -1,5 +1,9 @@
 = Ubuild Changelog
 
+== ubuild-0.1.5 (2018-08-13)
+=== Fixed
+  - Fixed incorrect import.
+
 == ubuild-0.1.4 (2018-08-13)
 === Fixed
   - Attempt to fix line ending issue on Linux.
