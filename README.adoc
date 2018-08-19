@@ -104,6 +104,11 @@ def build(flag=True):
     ...
 --------
 
+Here are some real-world examples of Verace in action:
+
+  - https://github.com/jeffrimko/Doctrine2/blob/master/app/_Build.py[Doctrine2]
+  - https://github.com/jeffrimko/QuickWin/blob/master/app/_Build.py[QuickWin]
+
 == Similar
 The following projects are similar and may be worth checking out:
 
