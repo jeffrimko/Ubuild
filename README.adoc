@@ -106,7 +106,7 @@ def build(flag=True):
     ...
 --------
 
-Here are some real-world examples of Verace in action:
+Here are some real-world examples of Ubuild in action:
 
   - https://github.com/jeffrimko/Doctrine2/blob/master/app/_Build.py[Doctrine2]
   - https://github.com/jeffrimko/QuickWin/blob/master/app/_Build.py[QuickWin]
