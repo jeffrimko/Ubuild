@@ -15,22 +15,36 @@ from qprompt import Menu, alert
 ## SECTION: Global Definitions                                  #
 ##==============================================================#
 
-__version__ = "0.1.5"
+__version__ = "0.1.6"
 
 #: The main build menu.
 _MENU = Menu()
+
+#: Menu names that are reserved.
+RESV_NAMES = ["q"]
 
 ##==============================================================#
 ## SECTION: Function Definitions                                #
 ##==============================================================#
 
+def _taken_names():
+    """Returns a list of names already taken by menu entries."""
+    return [e.name for e in _MENU.entries] + RESV_NAMES
+
 def _guess_name(desc):
     """Attempts to guess the menu entry name from the function name."""
     name = ""
+    # Try to find the shortest name based on the given description.
     for word in desc.split():
-        name += [c for c in list(word) if c.isalpha()][0].lower()
+        c = word[0].lower()
+        if not c.isalnum():
+            continue
+        name += c
+        if name not in _taken_names():
+            break
+    # If name is still taken, add a number postfix.
     count = 2
-    while name in [e.name for e in _MENU.entries]:
+    while name in _taken_names():
         name = f"{name}{count}"
         count += 1
     return name
@@ -71,7 +85,8 @@ def main(**kwargs):
     global _MENEU
     returns = kwargs.pop('returns', "func")
     header = kwargs.pop('header', "Ubuild")
-    sys.exit(_MENU.main(loop=True, returns="func", header=header, **kwargs))
+    loop = kwargs.pop('loop', True)
+    sys.exit(_MENU.main(loop=loop, returns=returns, header=header, **kwargs))
 
 def runner(searchdir="."):
     """Attempts to locate a build script by checking the search directory and

@@ -1,5 +1,13 @@
 = Ubuild Changelog
 
+== ubuild-0.1.6 (2018-08-21)
+=== Changed
+  - Automatic menu entry names will now attempt to be simplified, e.g. `do_a_thing()` = `(d) Do A Thing` instead of `(dat) Do A Thing` if no existing `(d)` entry.
+
+=== Fixed
+  - Can now call `main(loop=False)`.
+  - Properly handle menu entry collisions with reserved names, e.g. `(q) Quit` is reserved so colliding entry would be something like `(q2) Quick`.
+
 == ubuild-0.1.5 (2018-08-13)
 === Fixed
   - Fixed incorrect import.

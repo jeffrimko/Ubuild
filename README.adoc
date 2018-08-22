@@ -58,6 +58,8 @@ By default, the menu entry names are based off the function name. For example:
   - `do_something()` = `(ds) Do Something`
   - `do_something_else()` = `(dse) Do Something Else`
 
+However the names will attempt to use the shortest available name, e.g. `(ds) Do Something` will be `(d) Do Something` if there is no existing `(d)` entry.
+
 Because Ubuild is meant to be lightweight and capture build step details, often it might be useful to use https://github.com/jeffrimko/Auxly[Auxly] to call other utilities. For example:
 
 [source, python]
