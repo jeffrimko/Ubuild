@@ -1,3 +1,4 @@
+# -*- ubuild -*-
 """This library provides a simple framework for creating build menus."""
 
 ##==============================================================#
@@ -15,7 +16,7 @@ from qprompt import Menu, alert
 ## SECTION: Global Definitions                                  #
 ##==============================================================#
 
-__version__ = "0.1.6"
+__version__ = "0.2.0"
 
 #: The main build menu.
 _MENU = Menu()
@@ -23,9 +24,28 @@ _MENU = Menu()
 #: Menu names that are reserved.
 RESV_NAMES = ["q"]
 
+#: Default script name with extension.
+SCRIPTNAME = "_Build.py"
+
+#: Regex used to find alternative script names.
+ALTSCRIPTREGEX = "_[A-Z][A-z0-9_-]*\.py$"
+
+#: Line that must be found in a file for it to be an alternative script.
+ALTDECLARATION = "# -*- ubuild -*-"
+
 ##==============================================================#
 ## SECTION: Function Definitions                                #
 ##==============================================================#
+
+def _find_script(dpath):
+    """Attempts to find a script in the given absolute directory path."""
+    if not op.isabs(dpath):
+        return
+    if SCRIPTNAME in os.listdir(dpath):
+        return SCRIPTNAME
+    for f in auxly.filesys.walkfiles(dpath, regex=ALTSCRIPTREGEX, recurse=False):
+        if ALTDECLARATION in auxly.filesys.File(op.join(dpath, f)).read().splitlines():
+            return f
 
 def _taken_names():
     """Returns a list of names already taken by menu entries."""
@@ -93,17 +113,16 @@ def runner(searchdir="."):
     walking up parent directories towards the filesystem root. If found, the
     build script will be run. When the script exits, the system-level exit()
     will be called using the return value from the script."""
-    scriptname = "_Build.py"
     cdir = op.abspath(searchdir)
-    found = False
+    scriptname = None
     while True:
-        if scriptname in os.listdir(cdir):
-            found = True
+        scriptname = _find_script(cdir)
+        if scriptname:
             break
         if cdir == op.abspath(os.sep):
             break
         cdir = op.abspath(op.join(cdir, ".."))
-    if not found:
+    if not scriptname:
         alert("Script not found.")
         return
     path = op.join(cdir, scriptname)
