@@ -112,9 +112,17 @@ Here are some real-world examples of Ubuild in action:
   - https://github.com/jeffrimko/QuickWin/blob/master/app/_Build.py[QuickWin]
 
 === Alternative Script Names
-The default Ubuild script name is `_Build.py` but occasionally it might make sense to have an alternative name. The script must match the following regex: `_[A-Z][A-z0-9_-]*\.py$`
+The default Ubuild script name is `_Build.py` but occasionally it might make sense to have an alternative name. The script must match the following regex:
 
-The script must also contain the following line exactly without any changes or trailing whitespace: `# -*- ubuild -*-`
+--------
+_[A-Z][A-z0-9_-]*\.py$
+--------
+
+The script must also contain the following line exactly without any changes or trailing whitespace:
+
+--------
+# -*- ubuild -*-
+--------
 
 == Similar
 The following projects are similar and may be worth checking out:
