@@ -1,5 +1,9 @@
 = Ubuild Changelog
 
+== ubuild-0.2.0 (2018-11-26)
+=== Added
+  - Can now specify alternative script names.
+
 == ubuild-0.1.6 (2018-08-21)
 === Changed
   - Automatic menu entry names will now attempt to be simplified, e.g. `do_a_thing()` = `(d) Do A Thing` instead of `(dat) Do A Thing` if no existing `(d)` entry.
