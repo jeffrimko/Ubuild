@@ -7,7 +7,7 @@ setup(
     version = "0.2.0",
     author = "Jeff Rimko",
     author_email = "jeffrimko@gmail.com",
-    description = "A no-frills build script framework.",
+    description = "A no-frills build/task script framework.",
     license = "MIT",
     keywords = "cli menu",
     url = "https://github.com/jeffrimko/Ubuild",

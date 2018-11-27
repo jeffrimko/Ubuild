@@ -1,6 +1,6 @@
 = Ubuild
 
-A no-frills build script framework.
+A no-frills build/task script framework.
 
 == Introduction
 This project provides a Python 3.3+ library/utility for creating build scripts. The main features of Ubuild are:
