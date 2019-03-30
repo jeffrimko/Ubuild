@@ -10,13 +10,13 @@ import os
 import os.path as op
 
 import auxly
-from qprompt import Menu, alert
+from qprompt import Menu, alert, _guess_name, _guess_desc
 
 ##==============================================================#
 ## SECTION: Global Definitions                                  #
 ##==============================================================#
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 #: The main build menu.
 _MENU = Menu()
@@ -51,28 +51,6 @@ def _taken_names():
     """Returns a list of names already taken by menu entries."""
     return [e.name for e in _MENU.entries] + RESV_NAMES
 
-def _guess_name(desc):
-    """Attempts to guess the menu entry name from the function name."""
-    name = ""
-    # Try to find the shortest name based on the given description.
-    for word in desc.split():
-        c = word[0].lower()
-        if not c.isalnum():
-            continue
-        name += c
-        if name not in _taken_names():
-            break
-    # If name is still taken, add a number postfix.
-    count = 2
-    while name in _taken_names():
-        name = f"{name}{count}"
-        count += 1
-    return name
-
-def _guess_desc(fname):
-    """Attempts to guess the menu entry description from the function name."""
-    return fname.title().replace("_", " ")
-
 def menu(*args, **kwargs):
     """Decorator that adds the function to the build menu."""
     args = list(args)
@@ -90,7 +68,7 @@ def menu(*args, **kwargs):
         if None == desc:
             desc = _guess_desc(func.__name__)
         if None == name:
-            name = _guess_name(desc)
+            name = _guess_name(desc, _taken_names())
         _MENU.add(name, desc, func, fargs, fkrgs)
         return func
     if argfunc:
