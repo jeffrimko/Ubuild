@@ -128,6 +128,7 @@ The script must also contain the following line exactly without any changes or t
 The following projects are similar and may be worth checking out:
 
   - https://github.com/pyinvoke/invoke/[Invoke]
+  - https://github.com/OliverSherouse/yo-runner[Yo-runner]
 
 === Q&A
 [qanda]
