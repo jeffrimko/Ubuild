@@ -28,7 +28,7 @@ RESV_NAMES = ["q"]
 SCRIPTNAME = "_Build.py"
 
 #: Regex used to find alternative script names.
-ALTSCRIPTREGEX = "_[A-Z][A-z0-9_-]*\.py$"
+ALTSCRIPTREGEX = r"_[A-Z][A-z0-9_-]*\.py$"
 
 #: Line that must be found in a file for it to be an alternative script.
 ALTDECLARATION = "# -*- ubuild -*-"
